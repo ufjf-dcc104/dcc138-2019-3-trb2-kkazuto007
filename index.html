@@ -75,8 +75,8 @@
         var pc = new Sprite({ x: 100, y: 100, w: 64, h: 48, vx: 20,vy: 20, comportar: porTeclasDirecionais(teclas), props: { tipo: "pc" }});
         cena2.adicionar(pc);
 
-        var relogio = new Sprite({ x: pc.x, y: pc.y -60, w: 32, h: 32, props: { tipo: "relogio" }});
-        cena2.adicionar(relogio);
+        var relogiosprite = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, w: 32, h: 32, props: { tipo: "relogio" }});
+        cena2.adicionar(relogiosprite);
 
         function porTeclasDirecionais(teclas) {
             return function () {

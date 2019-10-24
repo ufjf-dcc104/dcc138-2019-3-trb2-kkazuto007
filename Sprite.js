@@ -36,7 +36,7 @@ Sprite.prototype.desenhar = function (ctx) {
         ctx.save();
         ctx.scale(4,4)
         ctx.translate(this.x, this.y);
-        ctx.fillRect(pc.x, pc.y-60,this.w,this.h);
+        ctx.fillRect(canvas.width/5,canvas.height/64,this.w,this.h);
         //ctx.drawImage(this.scene.assets.img("goblin"),Math.floor(F/60)*32,0,32,32,0,0,this.w,this.h);
         ctx.restore();
     }

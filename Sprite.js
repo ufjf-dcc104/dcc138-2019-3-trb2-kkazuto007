@@ -124,7 +124,7 @@ Sprite.prototype.mover = function (dt) {
     if(Math.floor(this.frame) >= 20){
         this.frame =0;
     }
-    this.moverOrtogonal(dt);
+    this.movermru(dt);
 }
 
 Sprite.prototype.moverCircular = function (dt) {
@@ -136,6 +136,17 @@ Sprite.prototype.moverCircular = function (dt) {
     this.x = this.x + this.vx * dt;
     this.y = this.y + this.vy * dt;
 
+    this.cooldown = this.cooldown - dt;
+}
+
+Sprite.prototype.movermru = function (dt){
+    this.x = this.x + this.ax * dt;
+    this.y = this.y + this.ay * dt;
+
+    this.mc = Math.floor(this.x / this.scene.map.SIZE);
+    this.ml = Math.floor(this.y / this.scene.map.SIZE);
+
+    this.aplicaRestricoes(dt);
     this.cooldown = this.cooldown - dt;
 }
 
@@ -156,9 +167,9 @@ Sprite.prototype.aplicaRestricoes = function (dt) {
 
     var dnx;
     var dx;
-    dx = this.vx * dt;
+    dx = this.ax * dt;
     dnx = dx;
-    dy = this.vy * dt;
+    dy = this.ay * dt;
     dny = dy;
     if (dx > 0 && this.scene.map.cells[this.mc + 1][this.ml].tipo != 0) {
         dnx = this.scene.map.SIZE * (this.mc + 1) - (this.x + this.w / 2);

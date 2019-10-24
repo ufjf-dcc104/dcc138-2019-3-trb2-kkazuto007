@@ -35,11 +35,14 @@
             espaco: 0
         }
 
+        var relogio = -1;
+
         mapAssets = new AssetsManager();
         mapAssets.loadImage("block","./assets/block.png");
         mapAssets.loadImage("cavetiles","./assets/caves.png");
         mapAssets.loadImage("redstone","./assets/redstone.png");
         mapAssets.loadImage("spawner","./assets/spawner.png");
+        mapAssets.loadImage("temple","./assets/temple.png");
 
 
         var mapa = new Map({COLUMNS:20, LINES:18, m:
@@ -71,6 +74,9 @@
 
         var pc = new Sprite({ x: 100, y: 100, w: 64, h: 48, comportar: porTeclasDirecionais(teclas), props: { tipo: "pc" }});
         cena2.adicionar(pc);
+
+        var relogio = new Sprite({ x: pc.x, y: pc.y -60, w: 32, h: 32, props: { tipo: "relogio" }});
+        cena2.adicionar(relogio);
 
         function porTeclasDirecionais(teclas) {
             return function () {
@@ -136,10 +142,12 @@
 
         function passo(t) { 
             ctx.clearRect(0,0, canvas.width, canvas.height);
-            ctx.save();dt = (t - anterior) / 1000;
+            ctx.save();
+            dt = (t - anterior) / 1000;
             ctx.scale(4,4)
             ctx.translate(canvas.width/8-pc.x,canvas.height/8-pc.y)
             if(assetsMng.progresso()===100){
+                relogio += dt;
                 cena1.passo(dt);
                 cena2.passo(dt);
             }

@@ -36,7 +36,7 @@ Map.prototype.desenhar = function (ctx) {
                     ctx.drawImage(this.assets.img("block"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 2:
-                    ctx.drawImage(this.assets.img("spawner"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("temple"),0,0,128,128,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 3:
                     ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);

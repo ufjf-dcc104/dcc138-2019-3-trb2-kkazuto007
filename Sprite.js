@@ -29,67 +29,76 @@ Sprite.prototype.constructor = Sprite;
 Sprite.prototype.desenhar = function (ctx) {
 
     ctx.save();
+    ctx.scale(0.5,0.5)
     ctx.translate(this.x, this.y);
     var F = Math.floor(this.frame);
     if(this.props.tipo === "npc"){
+       ctx.save();
+       ctx.translate(this.x, this.y);
+       ctx.fillRect(this.x,this.y,this.w,this.h);
        ctx.drawImage(this.scene.assets.img("goblin"),
        0,
        0,
        64,
        64,
-       -64/2,
-       -64/2,
-       64,
-       64
+       0,
+       0,
+       this.w,
+       this.h
        );
        ctx.restore();
     }
     if(this.props.tipo === "pc"){
+        ctx.translate(this.x, this.y);
         switch (this.lado){
             case 1:
+             //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
              (F%4)*64,
              79,
              64,
              48,
-             -64/2,
-             -64,
+             -this.w/2,
+             -this.h,
              64,
              48
              );
              break;
              case 2:
+             //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
              (F%4)*64,
              135,
              64,
              48,
-             -16,
-             -64,
+             0,
+             -this.h,
              64,
              48
              );
              break;
             case 3:
+             //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
              (F%4)*64,
              0,
              64,
              48,
-             -64/2,
-             -64,
+             -this.w/2,
+             -this.h,
              64,
              48
              );
              break;
              case 4:
+             //ctx.fillRect(-this.w/2,-this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
              (F%4)*64,
              199,
              64,
              48,
-             -48,
-             -64,
+             -this.w,
+             -this.h,
              64,
              48
              );
@@ -97,9 +106,6 @@ Sprite.prototype.desenhar = function (ctx) {
              default:    
         };
         ctx.restore();
-    }
-    else{
-        ctx.fillRect(0,0,this.w,this.h);
     }
     ctx.restore();
 

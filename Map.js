@@ -3,9 +3,7 @@ function Map(modelo) {
         cells: [],
         LINES: 32,
         COLUMNS: 32,
-        SIZE: 64,
-        WIDTH: 64,
-        HEIGHT: 64,
+        SIZE: 32,
         assets: null,
     }
     Object.assign(this, exemplo, modelo);
@@ -32,33 +30,32 @@ Map.prototype.desenhar = function (ctx) {
             switch (this.cells[c][l].tipo) {
                 case 0:
                     cor = "tan";
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,32,32);
+                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 1:
-                    cor = "darkgrey";
-                    ctx.drawImage(this.assets.img("block"),c*this.SIZE,l*this.SIZE,32,32);
+                    ctx.drawImage(this.assets.img("block"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 2:
-                    ctx.drawImage(this.assets.img("spawner"),c*this.SIZE,l*this.SIZE,32,32);
+                    ctx.drawImage(this.assets.img("spawner"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 3:
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,32,32);
-                    ctx.drawImage(this.assets.img("cavetiles"),256,98,32,32,c*this.SIZE,l*this.SIZE,32,32);
+                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("cavetiles"),256,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 4:
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,32,32);
-                    ctx.drawImage(this.assets.img("cavetiles"),320,98,32,32,c*this.SIZE,l*this.SIZE,32,32);
+                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("cavetiles"),320,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 5:
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,32,32);
-                    ctx.drawImage(this.assets.img("cavetiles"),288,64,32,32,c*this.SIZE,l*this.SIZE,32,32);
+                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("cavetiles"),288,64,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 6:
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,32,32);
-                    ctx.drawImage(this.assets.img("cavetiles"),288,120,32,32,c*this.SIZE,l*this.SIZE,32,32);
+                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("cavetiles"),288,120,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 7:
-                    ctx.drawImage(this.assets.img("redstone"),0,0,32,32,c*this.SIZE,l*this.SIZE,32,32);
+                    ctx.drawImage(this.assets.img("redstone"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 default:
                     cor = "black";

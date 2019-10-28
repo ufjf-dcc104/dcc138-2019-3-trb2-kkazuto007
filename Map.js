@@ -30,21 +30,22 @@ Map.prototype.desenhar = function (ctx) {
             switch (this.cells[c][l].tipo) {
                 case 0:
                     cor = "tan";
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 1:
-                    ctx.drawImage(this.assets.img("block"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),0,32,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 2:
+                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     ctx.drawImage(this.assets.img("temple"),0,0,128,128,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 3:
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
-                    ctx.drawImage(this.assets.img("cavetiles"),256,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),32,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     break;
                 case 4:
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
-                    ctx.drawImage(this.assets.img("cavetiles"),320,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),32,32,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     break;
                 case 5:
                     ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);

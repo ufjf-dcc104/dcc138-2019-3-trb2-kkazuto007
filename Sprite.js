@@ -11,6 +11,7 @@ function Sprite(params = {}) {
         a: 0,
         va: 0,
         vm: 0,
+        rate: 0,
         lado: 1,
         frame: 0,
         props: {},
@@ -33,7 +34,7 @@ Sprite.prototype.desenhar = function (ctx) {
     ctx.translate(this.x, this.y);
     if (this.ax >= 0){
       if (this.ay >= 0){
-        var F = Math.floor(this.frame*this.ax/10 + this.frame*this.ay/10);
+        var F = Math.floor(this.frame*this.ax/10 + this.frame*this.ay/10 + this.frame*this.rate);
       }
       else{
         var F = Math.floor(this.frame*(-1)*this.ay/10);
@@ -53,8 +54,8 @@ Sprite.prototype.desenhar = function (ctx) {
     if(this.props.tipo === "coracao"){
         ctx.save();
         ctx.scale(5,5)
-        ctx.translate(canvas.width/2,7*canvas.height/8);
-        ctx.drawImage(this.scene.assets.img("heart"),Math.floor(F%4)*32,0,32,32,0,0,this.w,this.h);
+        ctx.translate(canvas.width/3,canvas.height/128);
+        ctx.drawImage(this.scene.assets.img("heart"),(F%4)*32,0,32,32,0,0,this.w,this.h);
         ctx.restore();
     }
 

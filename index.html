@@ -23,6 +23,8 @@
         assetsMng.loadImage("demon", "assets/player.png");
         assetsMng.loadImage("goblin","./assets/goblin.png");
         assetsMng.loadImage("clock","./assets/clock.png");
+        assetsMng.loadImage("heart","./assets/heart.png");
+
 
 
 
@@ -83,12 +85,12 @@
         cena2.adicionar(relogiosprite);
 
 
-        var heart = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, ax: 0, w: 32, h: 32, comportar: heartrate() , props: { tipo: "coracao" }});
+        var heart = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, rate: 0, w: 32, h: 32, comportar: heartrate() , props: { tipo: "coracao" }});
         cena2.adicionar(heart);
 
         function heartrate(){
             return function (){
-                this.ax = this.ax + relogio
+                this.rate = 1 + relogio/50
             }
         }
 

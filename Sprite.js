@@ -105,7 +105,7 @@ Sprite.prototype.desenhar = function (ctx) {
              192,
              32,
              64,
-             -this.w,
+             -this.w/2,
              -this.h,
              32,
              64

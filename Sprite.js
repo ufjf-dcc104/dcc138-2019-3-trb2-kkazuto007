@@ -31,7 +31,17 @@ Sprite.prototype.desenhar = function (ctx) {
     ctx.save();
     ctx.scale(0.5,0.5)
     ctx.translate(this.x, this.y);
-    var F = Math.floor(this.frame);
+    if (this.ax >= 0){
+      if (this.ay >= 0){
+        var F = Math.floor(this.frame*this.ax/10 + this.frame*this.ay/10);
+      }
+      else{
+        var F = Math.floor(this.frame*(-1)*this.ay/10);
+      }
+    }
+    else{
+      var F = Math.floor(this.frame*(-1)*this.ax/10);
+    }
     if(this.props.tipo === "relogio"){
         ctx.save();
         ctx.scale(4,4)

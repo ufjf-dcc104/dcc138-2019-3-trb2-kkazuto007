@@ -11,7 +11,7 @@ function Sprite(params = {}) {
         a: 0,
         va: 0,
         vm: 0,
-        lado: 0,
+        lado: 1,
         frame: 0,
         props: {},
         cooldown: 0,

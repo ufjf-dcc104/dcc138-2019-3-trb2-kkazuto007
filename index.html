@@ -82,6 +82,16 @@
         var relogiosprite = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, w: 32, h: 32, props: { tipo: "relogio" }});
         cena2.adicionar(relogiosprite);
 
+
+        var heart = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, ax: 0, w: 32, h: 32, comportar: heartrate() , props: { tipo: "coracao" }});
+        cena2.adicionar(heart);
+
+        function heartrate(){
+            return function (){
+                this.ax = this.ax + relogio
+            }
+        }
+
         function porTeclasDirecionais(teclas) {
             return function () {
                 if (teclas.esquerda) { this.ax = -30, this.lado = 2; }
@@ -152,8 +162,8 @@
             ctx.clearRect(0,0, canvas.width, canvas.height);
             ctx.save();
             dt = (t - anterior) / 1000;
-            ctx.scale(4,4)
-            ctx.translate(canvas.width/8-pc.x,canvas.height/8-pc.y)
+            ctx.scale(6,6)
+            ctx.translate(canvas.width/12-pc.x,canvas.height/12-pc.y)
             if(assetsMng.progresso()===100){
                 relogio += dt;
                 cena1.passo(dt);

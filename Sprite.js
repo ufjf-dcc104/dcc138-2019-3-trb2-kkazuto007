@@ -50,6 +50,14 @@ Sprite.prototype.desenhar = function (ctx) {
         ctx.restore();
     }
 
+    if(this.props.tipo === "coracao"){
+        ctx.save();
+        ctx.scale(5,5)
+        ctx.translate(canvas.width/2,7*canvas.height/8);
+        ctx.drawImage(this.scene.assets.img("heart"),Math.floor(F%4)*32,0,32,32,0,0,this.w,this.h);
+        ctx.restore();
+    }
+
     if(this.props.tipo === "npc"){
        ctx.save();
        ctx.translate(this.x, this.y);

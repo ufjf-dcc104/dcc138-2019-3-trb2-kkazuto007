@@ -62,53 +62,53 @@ Sprite.prototype.desenhar = function (ctx) {
             case 1:
              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*64,
-             79,
+             (F%4)*32,
+             0,
+             32,
              64,
-             48,
              -this.w/2,
              -this.h,
-             64,
-             48
+             32,
+             64
              );
              break;
              case 2:
              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*64,
-             135,
+             (F%4)*32,
              64,
-             48,
-             0,
+             32,
+             64,
+             -this.w/2,
              -this.h,
-             64,
-             48
+             32,
+             64
              );
              break;
             case 3:
              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*64,
-             0,
+             (F%4)*32,
+             128,
+             32,
              64,
-             48,
              -this.w/2,
              -this.h,
-             64,
-             48
+             32,
+             64
              );
              break;
              case 4:
              //ctx.fillRect(-this.w/2,-this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*64,
-             199,
+             (F%4)*32,
+             192,
+             32,
              64,
-             48,
              -this.w,
              -this.h,
-             64,
-             48
+             32,
+             64
              );
              break;
              default:    

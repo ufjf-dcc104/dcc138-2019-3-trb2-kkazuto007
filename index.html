@@ -20,7 +20,7 @@
         assetsMng.loadImage("explosion", "assets/explosion.png");
         assetsMng.loadAudio("explosion", "assets/explosion.mp3");
         assetsMng.loadAudio("shot", "assets/shot.mp3");
-        assetsMng.loadImage("demon", "assets/demonwalk.png");
+        assetsMng.loadImage("demon", "assets/player.png");
         assetsMng.loadImage("goblin","./assets/goblin.png");
         assetsMng.loadImage("clock","./assets/clock.png");
 
@@ -84,12 +84,12 @@
 
         function porTeclasDirecionais(teclas) {
             return function () {
-                if (teclas.esquerda) { this.ax = -30, this.lado = 4; }
-                if (teclas.direita) { this.ax = +30, this.lado = 2; }
+                if (teclas.esquerda) { this.ax = -30, this.lado = 2; }
+                if (teclas.direita) { this.ax = +30, this.lado = 4; }
                 if (teclas.esquerda === teclas.direita) { this.ax = 0; }
 
-                if (teclas.cima) { this.ay = -30, this.lado = 1 }
-                if (teclas.baixo) { this.ay = +30, this.lado = 3}
+                if (teclas.cima) { this.ay = -30, this.lado = 3 }
+                if (teclas.baixo) { this.ay = +30, this.lado = 1}
                 if (teclas.cima === teclas.baixo) { this.ay = 0; }
 
                 if (teclas.espaco && this.cooldown <= 0) {

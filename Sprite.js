@@ -58,7 +58,17 @@ Sprite.prototype.desenhar = function (ctx) {
     }
     if(this.props.tipo === "pc"){
         ctx.translate(this.x, this.y);
-        switch (this.lado){
+        ctx.drawImage(this.scene.assets.img("demon"),
+             (F%4)*32,
+             (Math.floor(this.lado)-1)*64,
+             32,
+             64,
+             -this.w/2,
+             -this.h,
+             32,
+             64
+        );
+       /* switch (this.lado){
             case 1:
              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
              ctx.drawImage(this.scene.assets.img("demon"),
@@ -113,6 +123,7 @@ Sprite.prototype.desenhar = function (ctx) {
              break;
              default:    
         };
+        */
         ctx.restore();
     }
     ctx.restore();

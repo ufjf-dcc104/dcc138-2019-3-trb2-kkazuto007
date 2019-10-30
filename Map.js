@@ -28,36 +28,54 @@ Map.prototype.desenhar = function (ctx) {
     for (var c = 0; c < this.COLUMNS; c++) {
         for (var l = 0; l < this.LINES; l++) {
             switch (this.cells[c][l].tipo) {
+                //common floor:
                 case 0:
                     cor = "tan";
-                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),0,64,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 1:
                     ctx.drawImage(this.assets.img("basetiles"),0,32,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 2:
                     ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
-                    ctx.drawImage(this.assets.img("temple"),0,0,128,128,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
+
+                ///borders:
                 case 3:
+                    ctx.drawImage(this.assets.img("basetiles"),64,0,16,16,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 4:
+                    ctx.drawImage(this.assets.img("basetiles"),80,0,16,16,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 5:
+                    ctx.drawImage(this.assets.img("basetiles"),96,0,16,16,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 6:
+                    ctx.drawImage(this.assets.img("basetiles"),64,16,16,16,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 7:
+                    ctx.drawImage(this.assets.img("basetiles"),96,16,16,16,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 8:
+                    ctx.drawImage(this.assets.img("basetiles"),64,32,16,16,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 9:
+                    ctx.drawImage(this.assets.img("basetiles"),80,32,16,16,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 10:
+                    ctx.drawImage(this.assets.img("basetiles"),96,32,16,16,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+
+                //lamps:
+                case 11:
                     ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     ctx.drawImage(this.assets.img("basetiles"),32,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     break;
-                case 4:
+                case 12:
                     ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     ctx.drawImage(this.assets.img("basetiles"),32,32,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     break;
-                case 5:
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
-                    ctx.drawImage(this.assets.img("cavetiles"),288,64,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
-                    break;
-                case 6:
-                    ctx.drawImage(this.assets.img("cavetiles"),288,98,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
-                    ctx.drawImage(this.assets.img("cavetiles"),288,120,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
-                    break;
-                case 7:
-                    ctx.drawImage(this.assets.img("redstone"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
-                    break;
+                
                 default:
                     cor = "black";
             }

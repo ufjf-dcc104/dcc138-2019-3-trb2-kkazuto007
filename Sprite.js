@@ -201,20 +201,36 @@ Sprite.prototype.aplicaRestricoes = function (dt) {
     dy = this.ay * dt;
     dny = dy;
     if (dx > 0 && this.scene.map.cells[this.mc + 1][this.ml].tipo != 0) {
-        dnx = this.scene.map.SIZE * (this.mc + 1) - (this.x + this.w / 2);
-        dx = Math.min(dnx, dx);
+        if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 1){
+            if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 2){
+                dnx = this.scene.map.SIZE * (this.mc + 1) - (this.x + this.w / 2);
+                dx = Math.min(dnx, dx);
+            }
+        }
     }
     if (dx < 0 && this.scene.map.cells[this.mc - 1][this.ml].tipo != 0) {
-        dnx = this.scene.map.SIZE * (this.mc - 1 + 1) - (this.x - this.w / 2);
-        dx = Math.max(dnx, dx);
+        if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 1){
+            if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 2){
+                dnx = this.scene.map.SIZE * (this.mc - 1 + 1) - (this.x - this.w / 2);
+                dx = Math.max(dnx, dx);
+            }
+        }
     }
     if (dy > 0 && this.scene.map.cells[this.mc][this.ml + 1].tipo != 0) {
-        dny = this.scene.map.SIZE * (this.ml + 1) - (this.y + this.h / 2);
-        dy = Math.min(dny, dy);
+        if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 1){
+            if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 2){
+                dny = this.scene.map.SIZE * (this.ml + 1) - (this.y + this.h / 2);
+                dy = Math.min(dny, dy);
+            }
+        }
     }
     if (dy < 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 0) {
-        dny = this.scene.map.SIZE * (this.ml - 1 + 1) - (this.y - this.h / 2);
-        dy = Math.max(dny, dy);
+        if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 1){
+            if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 2){
+                dny = this.scene.map.SIZE * (this.ml - 1 + 1) - (this.y - this.h / 2);
+                dy = Math.max(dny, dy);
+            }
+        }
     }
     this.vy = dy / dt;
     this.x = this.x + dx;

@@ -30,128 +30,129 @@ Sprite.prototype.constructor = Sprite;
 Sprite.prototype.desenhar = function (ctx) {
 
     ctx.save();
-    ctx.scale(0.5,0.5)
+    ctx.scale(0.5, 0.5)
     ctx.translate(this.x, this.y);
-    if (this.ax >= 0){
-      if (this.ay >= 0){
-        var F = Math.floor(this.frame*this.ax/10 + this.frame*this.ay/10 + this.frame*this.rate);
-      }
-      else{
-        var F = Math.floor(this.frame*(-1)*this.ay/10);
-      }
+    if (this.ax >= 0) {
+        if (this.ay >= 0) {
+            var F = Math.floor(this.frame * this.ax / 10 + this.frame * this.ay / 10 + this.frame * this.rate);
+        }
+        else {
+            var F = Math.floor(this.frame * (-1) * this.ay / 10);
+        }
     }
-    else{
-      var F = Math.floor(this.frame*(-1)*this.ax/10);
+    else {
+        var F = Math.floor(this.frame * (-1) * this.ax / 10);
     }
-    if(this.props.tipo === "relogio"){
+    if (this.props.tipo === "relogio") {
         ctx.save();
-        ctx.scale(4,4)
-        ctx.translate(canvas.width/5,canvas.height/64);
-        ctx.drawImage(this.scene.assets.img("clock"),Math.floor(relogio/60)*32,0,32,32,0,0,this.w,this.h);
+        ctx.scale(4, 4)
+        ctx.translate(canvas.width / 5, canvas.height / 64);
+        ctx.drawImage(this.scene.assets.img("clock"), Math.floor(relogio / 60) * 32, 0, 32, 32, 0, 0, this.w, this.h);
         ctx.restore();
     }
 
-    if(this.props.tipo === "coracao"){
+    if (this.props.tipo === "coracao") {
         ctx.save();
-        ctx.scale(5,5)
-        ctx.translate(canvas.width/3,canvas.height/128);
-        ctx.drawImage(this.scene.assets.img("heart"),(F%4)*32,0,32,32,0,0,this.w,this.h);
+        ctx.scale(5, 5)
+        ctx.translate(canvas.width / 3, canvas.height / 128);
+        ctx.drawImage(this.scene.assets.img("heart"), (F % 4) * 32, 0, 32, 32, 0, 0, this.w, this.h);
         ctx.restore();
     }
 
-    if(this.props.tipo === "npc"){
-       ctx.save();
-       ctx.translate(this.x, this.y);
-       ctx.fillRect(this.x,this.y,this.w,this.h);
-       ctx.drawImage(this.scene.assets.img("goblin"),
-       0,
-       0,
-       64,
-       64,
-       0,
-       0,
-       this.w,
-       this.h
-       );
-       ctx.restore();
+    if (this.props.tipo === "npc") {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+        ctx.drawImage(this.scene.assets.img("goblin"),
+            0,
+            0,
+            64,
+            64,
+            0,
+            0,
+            this.w,
+            this.h
+        );
+        ctx.restore();
     }
-    if(this.props.tipo === "pc"){
+    if (this.props.tipo === "pc") {
         ctx.translate(this.x, this.y);
         ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*32,
-             (Math.floor(this.lado)-1)*64,
-             32,
-             64,
-             -this.w/2,
-             -this.h,
-             32,
-             64
+            (F % 4) * 32,
+            (Math.floor(this.lado) - 1) * 64,
+            32,
+            64,
+            -this.w/2,
+            -this.h,
+            32,
+            64
         );
-       /* switch (this.lado){
-            case 1:
-             //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
-             ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*32,
-             0,
-             32,
-             64,
-             -this.w/2,
-             -this.h,
-             32,
-             64
-             );
-             break;
-             case 2:
-             //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
-             ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*32,
-             64,
-             32,
-             64,
-             -this.w/2,
-             -this.h,
-             32,
-             64
-             );
-             break;
-            case 3:
-             //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
-             ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*32,
-             128,
-             32,
-             64,
-             -this.w/2,
-             -this.h,
-             32,
-             64
-             );
-             break;
-             case 4:
-             //ctx.fillRect(-this.w/2,-this.h, this.w, this.h);
-             ctx.drawImage(this.scene.assets.img("demon"),
-             (F%4)*32,
-             192,
-             32,
-             64,
-             -this.w/2,
-             -this.h,
-             32,
-             64
-             );
-             break;
-             default:    
-        };
-        */
+        ctx.fillRect(0,0,this.w,this.h);
+        /* switch (this.lado){
+             case 1:
+              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
+              ctx.drawImage(this.scene.assets.img("demon"),
+              (F%4)*32,
+              0,
+              32,
+              64,
+              -this.w/2,
+              -this.h,
+              32,
+              64
+              );
+              break;
+              case 2:
+              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
+              ctx.drawImage(this.scene.assets.img("demon"),
+              (F%4)*32,
+              64,
+              32,
+              64,
+              -this.w/2,
+              -this.h,
+              32,
+              64
+              );
+              break;
+             case 3:
+              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
+              ctx.drawImage(this.scene.assets.img("demon"),
+              (F%4)*32,
+              128,
+              32,
+              64,
+              -this.w/2,
+              -this.h,
+              32,
+              64
+              );
+              break;
+              case 4:
+              //ctx.fillRect(-this.w/2,-this.h, this.w, this.h);
+              ctx.drawImage(this.scene.assets.img("demon"),
+              (F%4)*32,
+              192,
+              32,
+              64,
+              -this.w/2,
+              -this.h,
+              32,
+              64
+              );
+              break;
+              default:    
+         };
+         */
         ctx.restore();
     }
     ctx.restore();
 
 }
 Sprite.prototype.mover = function (dt) {
-    this.frame +=3*dt;
-    if(Math.floor(this.frame) >= 20){
-        this.frame =0;
+    this.frame += 3 * dt;
+    if (Math.floor(this.frame) >= 20) {
+        this.frame = 0;
     }
     this.movermru(dt);
 }
@@ -168,7 +169,7 @@ Sprite.prototype.moverCircular = function (dt) {
     this.cooldown = this.cooldown - dt;
 }
 
-Sprite.prototype.movermru = function (dt){
+Sprite.prototype.movermru = function (dt) {
     this.x = this.x + this.ax * dt;
     this.y = this.y + this.ay * dt;
 
@@ -203,37 +204,33 @@ Sprite.prototype.aplicaRestricoes = function (dt) {
     dnx = dx;
     dy = this.ay * dt;
     dny = dy;
-    if (dx > 0 && this.scene.map.cells[this.mc + 1][this.ml].tipo != 0) {
-        if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 1){
-            if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 2){
-                dnx = this.scene.map.SIZE * (this.mc + 1) - (this.x + this.w / 2);
-                dx = Math.min(dnx, dx);
-            }
-        }
+    if (dx > 0 && this.scene.map.cells[this.mc + 1][this.ml].tipo != 0)
+       /// || dx > 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 1
+       /// dx > 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 2)
+    {
+        dnx = this.scene.map.SIZE * (this.mc + 1) - (this.x + this.w / 2);
+        dx = Math.min(dnx, dx);
     }
-    if (dx < 0 && this.scene.map.cells[this.mc - 1][this.ml].tipo != 0) {
-        if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 1){
-            if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 2){
-                dnx = this.scene.map.SIZE * (this.mc - 1 + 1) - (this.x - this.w / 2);
-                dx = Math.max(dnx, dx);
-            }
-        }
+    if (dx < 0 && this.scene.map.cells[this.mc - 1][this.ml].tipo != 0)
+       /// || dx < 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 1
+      ///  || dx < 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 2)
+    {
+        dnx = this.scene.map.SIZE * (this.mc - 1 + 1) - (this.x - this.w / 2);
+        dx = Math.max(dnx, dx);
     }
-    if (dy > 0 && this.scene.map.cells[this.mc][this.ml + 1].tipo != 0) {
-        if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 1){
-            if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 2){
-                dny = this.scene.map.SIZE * (this.ml + 1) - (this.y + this.h / 2);
-                dy = Math.min(dny, dy);
-            }
-        }
+    if (dy > 0 && this.scene.map.cells[this.mc][this.ml + 1].tipo != 0)
+      ///  || dy > 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 1
+      ///  || dy > 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 2)
+    {
+        dny = this.scene.map.SIZE * (this.ml + 1) - (this.y + this.h / 2);
+        dy = Math.min(dny, dy);
     }
-    if (dy < 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 0) {
-        if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 1){
-            if(this.scene.map.cells[this.mc][this.ml - 1].tipo != 2){
-                dny = this.scene.map.SIZE * (this.ml - 1 + 1) - (this.y - this.h / 2);
-                dy = Math.max(dny, dy);
-            }
-        }
+    if (dy < 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 0)
+       /// || dy < 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 1
+       /// || dy < 0 && this.scene.map.cells[this.mc][this.ml - 1].tipo != 2)
+    {
+        dny = this.scene.map.SIZE * (this.ml - 1 + 1) - (this.y - this.h / 2);
+        dy = Math.max(dny, dy);
     }
     this.ay = dy / dt;
     this.x = this.x + dx;

@@ -78,7 +78,7 @@
         var cena2 = new Scene({ ctx: ctx, w: canvas.width, h: canvas.height, assets: assetsMng, map:mapa });
         
 
-        var pc = new Sprite({ x: 100, y: 100, w: 64, h: 48, vx: 20,vy: 20, comportar: porTeclasDirecionais(teclas), props: { tipo: "pc" }});
+        var pc = new Sprite({ x: 100, y: 100, w:16, h: 32, vx: 20,vy: 20, comportar: porTeclasDirecionais(teclas), props: { tipo: "pc" }});
         cena2.adicionar(pc);
 
         var relogiosprite = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, w: 32, h: 32, props: { tipo: "relogio" }});

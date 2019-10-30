@@ -68,14 +68,13 @@ Map.prototype.desenhar = function (ctx) {
 
                 //lamps:
                 case 11:
-                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),0,32,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     ctx.drawImage(this.assets.img("basetiles"),32,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     break;
                 case 12:
-                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
+                    ctx.drawImage(this.assets.img("basetiles"),0,32,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     ctx.drawImage(this.assets.img("basetiles"),32,32,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     break;
-                
                 default:
                     cor = "black";
             }

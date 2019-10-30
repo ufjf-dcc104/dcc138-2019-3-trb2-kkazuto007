@@ -179,11 +179,12 @@ Sprite.prototype.movermru = function (dt){
     this.cooldown = this.cooldown - dt;
 }
 
+/*
 Sprite.prototype.moverOrtogonal = function (dt) {
-    //this.a = this.a + this.va*dt;
+    this.a = this.a + this.va*dt;
 
     this.vx = this.vx + this.ax * dt - this.vx * 0.9 * dt;
-    this.vy = this.vy + this.ay * dt /*+ 120 * dt*/;
+    this.vy = this.vy + this.ay * dt + 120 * dt;
 
 
     this.mc = Math.floor(this.x / this.scene.map.SIZE);
@@ -192,6 +193,8 @@ Sprite.prototype.moverOrtogonal = function (dt) {
     this.aplicaRestricoes(dt);
     this.cooldown = this.cooldown - dt;
 }
+*/
+
 Sprite.prototype.aplicaRestricoes = function (dt) {
 
     var dnx;
@@ -232,7 +235,7 @@ Sprite.prototype.aplicaRestricoes = function (dt) {
             }
         }
     }
-    this.vy = dy / dt;
+    this.ay = dy / dt;
     this.x = this.x + dx;
     this.y = this.y + dy;
 
@@ -242,7 +245,7 @@ Sprite.prototype.aplicaRestricoes = function (dt) {
     if (this.x > MAXX) this.x = MAXX;
     if (this.y > MAXY) {
         this.y = MAXY;
-        this.vy = 0;
+        this.ay = 0;
     }
     if (this.x - this.w / 2 < 0) this.x = 0 + this.w / 2;
     if (this.y - this.h / 2 < 0) this.y = 0 + this.h / 2;

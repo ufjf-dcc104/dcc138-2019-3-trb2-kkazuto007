@@ -86,6 +86,8 @@ Scene.prototype.desenharMapa = function () {
 
 Scene.prototype.passo = function(dt){
     this.limpar();
+    ctx.lineWidth = 256;
+    ctx.strokeRect(0, 0, canvas.width, canvas.height);
     this.desenharMapa();
     this.comportar();
     this.mover(dt);

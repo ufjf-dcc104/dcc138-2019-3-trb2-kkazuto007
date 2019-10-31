@@ -53,31 +53,32 @@ Sprite.prototype.desenhar = function (ctx) {
 
     if (this.props.tipo === "coracao") {
         ctx.save();
-        ctx.scale(5, 5)
+        ctx.scale(5, 5);
         ctx.translate(canvas.width / 3, canvas.height / 128);
         ctx.drawImage(this.scene.assets.img("heart"), (F % 4) * 32, 0, 32, 32, 0, 0, this.w, this.h);
         ctx.fillText(this.rate*100, this.x-15, this.y+30);
         ctx.restore();
     }
 
-    if (this.props.tipo === "npc") {
-        ctx.save();
+    if (this.props.tipo === "enemy") {
+        ctx.save();        
         ctx.translate(this.x, this.y);
-        ctx.fillRect(this.x, this.y, this.w, this.h);
-        ctx.drawImage(this.scene.assets.img("goblin"),
-            0,
-            0,
-            64,
-            64,
-            0,
-            0,
-            this.w,
-            this.h
+        ctx.fillRect(0, 0, this.w, this.h);
+        ctx.drawImage(this.scene.assets.img("enemy"),
+            Math.floor(relogio/60)*32,
+            (F % 2) *32,
+            32,
+            32,
+            -this.w/2,
+            -this.h/2,
+            this.w*4,
+            this.h*4
         );
         ctx.restore();
     }
     if (this.props.tipo === "pc") {
         ctx.translate(this.x, this.y);
+        ctx.fillRect(0, 0, this.w, this.h);
         ctx.drawImage(this.scene.assets.img("demon"),
             (F % 4) * 32,
             (Math.floor(this.lado) - 1) * 64,
@@ -88,62 +89,6 @@ Sprite.prototype.desenhar = function (ctx) {
             32,
             64
         );
-        /* switch (this.lado){
-             case 1:
-              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
-              ctx.drawImage(this.scene.assets.img("demon"),
-              (F%4)*32,
-              0,
-              32,
-              64,
-              -this.w/2,
-              -this.h,
-              32,
-              64
-              );
-              break;
-              case 2:
-              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
-              ctx.drawImage(this.scene.assets.img("demon"),
-              (F%4)*32,
-              64,
-              32,
-              64,
-              -this.w/2,
-              -this.h,
-              32,
-              64
-              );
-              break;
-             case 3:
-              //ctx.fillRect(-this.w/2, -this.h, this.w, this.h);
-              ctx.drawImage(this.scene.assets.img("demon"),
-              (F%4)*32,
-              128,
-              32,
-              64,
-              -this.w/2,
-              -this.h,
-              32,
-              64
-              );
-              break;
-              case 4:
-              //ctx.fillRect(-this.w/2,-this.h, this.w, this.h);
-              ctx.drawImage(this.scene.assets.img("demon"),
-              (F%4)*32,
-              192,
-              32,
-              64,
-              -this.w/2,
-              -this.h,
-              32,
-              64
-              );
-              break;
-              default:    
-         };
-         */
         ctx.restore();
     }
     ctx.restore();
@@ -170,6 +115,7 @@ Sprite.prototype.moverCircular = function (dt) {
 }
 
 Sprite.prototype.movermru = function (dt) {
+
     this.x = this.x + this.ax * dt;
     this.y = this.y + this.ay * dt;
 

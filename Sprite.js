@@ -46,7 +46,7 @@ Sprite.prototype.desenhar = function (ctx) {
     if (this.props.tipo === "relogio") {
         ctx.save();
         ctx.scale(2, 2)
-        ctx.translate(pc.x-32, pc.y - canvas.height / 4 );
+        ctx.translate(pc.x-32, pc.y - canvas.height / 4 + 32 );
         ctx.drawImage(this.scene.assets.img("clock"), Math.floor(relogio / 60) * 32, 0, 32, 32, 0, 0, this.w, this.h);
         ctx.restore();
     }
@@ -54,7 +54,7 @@ Sprite.prototype.desenhar = function (ctx) {
     if (this.props.tipo === "coracao") {
         ctx.save();
         ctx.scale(2, 2);
-        ctx.translate(pc.x + 96, pc.y - canvas.height / 4);
+        ctx.translate(pc.x + 90, pc.y - canvas.height / 4 + 32);
         ctx.drawImage(this.scene.assets.img("heart"), (F % 4) * 32, 0, 32, 32, 0, 0, this.w, this.h);
         ctx.fillText(this.rate*100, this.x-15, this.y+30);
         ctx.restore();

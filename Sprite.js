@@ -97,8 +97,9 @@ Sprite.prototype.desenhar = function (ctx) {
     if (this.props.tipo === "tiro"){
         ctx.save();
         ctx.translate(this.x, this.y);
+        var T = this.frame * 26
         ctx.drawImage(this.scene.assets.img("bash"),
-           Math.floor(F/5) * 64,
+           Math.floor(T/5) * 64,
            0,
            64,
            64,

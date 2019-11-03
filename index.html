@@ -24,6 +24,9 @@
         assetsMng.loadImage("clock","./assets/clock.png");
         assetsMng.loadImage("heart","./assets/heart.png");
         assetsMng.loadImage("enemy","./assets/enemy.png");
+        assetsMng.loadImage("menu","./assets/menu.png");
+        assetsMng.loadImage("gameboy","./assets/gameboy.png");
+
 
 
 
@@ -42,6 +45,7 @@
 
         var relogio = -1;
         var enemycronometer = 3;
+        var menu = -1;
 
         mapAssets = new AssetsManager();
         mapAssets.loadImage("basetiles","./assets/basetile.png");
@@ -127,6 +131,7 @@
             switch (e.keyCode) {
                 case 32:
                     teclas.espaco = 1;
+                    menu = 1;
                     break;
                 case 37:
                     teclas.esquerda = 1;
@@ -173,10 +178,15 @@
             ctx.scale(2,2)
             ctx.translate(canvas.width/4-pc.x,canvas.height/4-pc.y)
             if(assetsMng.progresso()===100){
-                relogio += dt;
-                enemycronometer -= dt;
-                cena1.passo(dt);
-                cena2.passo2(dt);
+                if(menu <= 0){
+                   ctx.drawImage(assetsMng.img("menu"),-64,-16,canvas.width/2,canvas.height/2);
+                }
+                else{
+                   relogio += dt;
+                   enemycronometer -= dt;
+                   cena1.passo(dt);
+                   cena2.passo2(dt);
+                }
             }
             anterior = t;
             requestAnimationFrame(passo);

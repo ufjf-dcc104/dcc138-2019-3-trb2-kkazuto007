@@ -24,6 +24,8 @@
         assetsMng.loadImage("clock","./assets/clock.png");
         assetsMng.loadImage("heart","./assets/heart.png");
         assetsMng.loadImage("enemy","./assets/enemy.png");
+        assetsMng.loadImage("temple","./assets/temple.png");
+        assetsMng.loadImage("circle","./assets/summoncircle.png");
         assetsMng.loadImage("bash","./assets/bash.png");
         assetsMng.loadImage("menu","./assets/menu.png");
         assetsMng.loadImage("gameboy","./assets/gameboy.png");
@@ -51,20 +53,19 @@
 
         mapAssets = new AssetsManager();
         mapAssets.loadImage("basetiles","./assets/basetile.png");
-        mapAssets.loadImage("temple","./assets/temple.png");
         mapAssets.loadImage("enemy","./assets/enemy.png");
 
 
         var mapa = new Map({COLUMNS:20, LINES:18, m:
         [
         [3,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  5],
-        [6,  2,  2,  1,  1,  0,  0,  0,  0,  0, 0,  0,  0,  1,  0,  1,  0,  1,  2,  7],
-        [6,  2,  2,  1,  0,  0,  1,  11, 0,  0,  1,  1,  11, 1,  0,  0,  0,  0,  1,  7],
+        [6,  2,  2,  1,  1,  0,  0,  0,  0,  13, 14, 15, 16, 1,  0,  1,  0,  1,  2,  7],
+        [6,  2,  2,  1,  0,  0,  1,  11, 0,  0,  13, 16, 11, 1,  0,  0,  0,  0,  1,  7],
         [6,  1,  1,  0,  0,  0,  1,  12, 1,  0,  0,  1,  12, 2,  1,  0,  1,  0,  0,  7],
         [6,  1,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  2,  2,  2,  2,  1,  0,  1,  7],
         [6,  0,  0,  0,  13, 14, 0,  1,  1,  1,  0,  0,  0,  0,  0,  1,  0,  0,  2,  7],
-        [6,  0,  0,  0,  15, 16, 1,  11, 1,  0,  0,  13,  11, 1,  0,  0,  0,  2,  1,  7],
-        [6,  0,  1,  0,  0,  0,  1,  12, 0,  0,  16, 18, 12, 1,  1,  0,  0,  1,  0,  7],
+        [6,  0,  0,  0,  15, 16, 0,  11, 1,  0,  0,  13, 11, 1,  0,  0,  0,  2,  1,  7],
+        [6,  0,  1,  0,  0,  0,  0,  12, 0,  0,  16, 18, 12, 1,  1,  0,  0,  1,  0,  7],
         [6,  0,  2,  1,  0,  0,  0,  1,  0,  2,  15, 19, 13, 1,  0,  0,  1,  0,  0,  7],
         [6,  1,  2,  2,  0,  1,  0,  0,  0,  16, 14, 17, 14, 1,  0,  0,  0,  0,  0,  7],
         [6,  1,  2,  1,  0,  0,  1,  11, 0,  1,  1,  15, 11, 1,  0,  0,  0,  0,  0,  7],
@@ -81,6 +82,9 @@
         var cena1 = new Scene({ ctx: ctx, w: canvas.width, h: canvas.height, assets: mapAssets, map:mapa });
         var cena2 = new Scene({ ctx: ctx, w: canvas.width, h: canvas.height, assets: assetsMng, map:mapa });
         
+        //add torres:
+        var temple1 = new Sprite({ x: 288, Y:64, w:64, h:64, vida: 3, props: {tipo: "tower"}});
+        cena2.adicionar(temple1);
 
         var pc = new Sprite({ x: 96, y: 128, w:8, h: 16, vx: 20,vy: 20, comportar: porTeclasDirecionais(teclas), props: { tipo: "pc" }});
         cena2.adicionar(pc);
@@ -90,7 +94,7 @@
 
         var heart = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, w: 16, h: 16, rate: 6, w: 32, h: 32, comportar: heartrate() , props: { tipo: "coracao" }});
         cena2.adicionar(heart);
-        cena2.adicionar(new Sprite({ x: 288, y: 48, w:16, h:16, comportar: persegue(pc), props: {tipo: "enemy"}}));
+
 
 
         function heartrate(){
@@ -105,7 +109,6 @@
                this.ay = 20*Math.sign(alvo.y - this.y);
             }
         }
-
 
         function porTeclasDirecionais(teclas) {
             return function () {

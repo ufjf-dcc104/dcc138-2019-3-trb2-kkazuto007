@@ -46,6 +46,9 @@ Scene.prototype.limpar = function(){
 
 Scene.prototype.checaColisao = function(){
     for(var i = 0; i<this.sprites.length; i++){
+        if(this.sprites[i].vida <=0){
+            this.sprites[i].morto = 1;
+        }
         if(this.sprites[i].morto){
             this.toRemove.push(this.sprites[i]);
         }
@@ -66,6 +69,12 @@ Scene.prototype.checaColisao = function(){
                     this.adicionar(new Explosion({x: this.sprites[i].x, y:this.sprites[i].y}));
                     this.assets.play("explosion");
                     kills++;
+                }
+                else 
+                if(this.sprites[i].props.tipo === "tower"
+                && this.sprites[j].props.tipo ==="tiro"){
+                    this.toRemove.push(this.sprites[j]);
+                    this.sprites[i].vida--;
                 }
             }
         }

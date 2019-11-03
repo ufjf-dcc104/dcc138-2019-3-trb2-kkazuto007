@@ -11,10 +11,12 @@ function Sprite(params = {}) {
         a: 0,
         va: 0,
         vm: 0,
+        vida: 1,
         morto: 0,
         rate: 0,
         lado: 1,
         frame: 0,
+        spawn: {},
         props: {},
         cooldown: 0,
         color: "blue",
@@ -62,7 +64,41 @@ Sprite.prototype.desenhar = function (ctx) {
 
         ctx.restore();
     }
-
+    
+    if (this.props.tipo === "tower") {
+        if(this.morto === 0){
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.fillRect(0, 0, this.w, this.h);
+            ctx.drawImage(this.scene.assets.img("temple"),
+                0,
+                0,
+                128,
+                128,
+                -this.w/2,
+                -this.h,
+                128,
+                128,
+            );
+            ctx.restore();
+        }
+        else{
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.fillRect(0, 0, this.w, this.h);
+            ctx.drawImage(this.scene.assets.img("circle"),
+                0,
+                0,
+                128,
+                128,
+                -this.w/2,
+                -this.h,
+                128,
+                128,
+            );
+            ctx.restore();
+        }
+    }
     if (this.props.tipo === "enemy") {
         ctx.save();
         ctx.translate(this.x, this.y);
@@ -95,6 +131,7 @@ Sprite.prototype.desenhar = function (ctx) {
         );
         ctx.restore();
     }
+    
     if (this.props.tipo === "tiro"){
         ctx.save();
         ctx.translate(this.x, this.y);

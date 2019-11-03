@@ -11,6 +11,7 @@ function Sprite(params = {}) {
         a: 0,
         va: 0,
         vm: 0,
+        morto: 0,
         rate: 0,
         lado: 1,
         frame: 0,
@@ -115,6 +116,11 @@ Sprite.prototype.desenhar = function (ctx) {
 }
 Sprite.prototype.mover = function (dt) {
     this.frame += 4 * dt;
+    if(this.props.tipo === "tiro"){
+        if (Math.floor(this.frame) >= 1){
+            this.morto = true;
+        }
+    }
     if (Math.floor(this.frame) >= 20) {
         this.frame = 0;
     }

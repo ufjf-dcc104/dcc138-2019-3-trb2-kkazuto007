@@ -5,6 +5,7 @@ function Explosion(params ={}) {
         frame: 0,
         w: 16,
         h: 16,
+        morto: 0,
         props: {
             tipo: "boom"
         },

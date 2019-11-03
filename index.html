@@ -24,6 +24,7 @@
         assetsMng.loadImage("clock","./assets/clock.png");
         assetsMng.loadImage("heart","./assets/heart.png");
         assetsMng.loadImage("enemy","./assets/enemy.png");
+        assetsMng.loadImage("bash","./assets/bash.png");
         assetsMng.loadImage("menu","./assets/menu.png");
         assetsMng.loadImage("gameboy","./assets/gameboy.png");
 
@@ -117,13 +118,13 @@
 
                 if (teclas.espaco && this.cooldown <= 0) {
                     var tiro = new Sprite({
-                        x: this.x-4, y: this.y-16,
+                        x: this.x-14, y: this.y-20,
                         a: this.a - 0.1 + 0.2 * Math.random(),
-                        vm: 240, color: "green", w: 16, h: 16,
+                        w: 64, h: 64,
                         props: { tipo: "tiro" }
                     });
                     this.scene.adicionar(tiro);
-                    this.cooldown = 5.0;
+                    this.cooldown = 2.0;
                     assetsMng.play("shot");
                 }
             }

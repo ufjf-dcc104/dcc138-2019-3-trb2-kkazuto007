@@ -97,14 +97,23 @@ Sprite.prototype.desenhar = function (ctx) {
     if (this.props.tipo === "tiro"){
         ctx.save();
         ctx.translate(this.x, this.y);
-        ctx.fillRect(0, 0, this.w, this.h);
+        ctx.drawImage(this.scene.assets.img("bash"),
+           Math.floor(F/5) * 64,
+           0,
+           64,
+           64,
+           0,
+           0,
+           64,
+           64
+        );
         ctx.restore();
     }
     ctx.restore();
 
 }
 Sprite.prototype.mover = function (dt) {
-    this.frame += 3 * dt;
+    this.frame += 4 * dt;
     if (Math.floor(this.frame) >= 20) {
         this.frame = 0;
     }

@@ -46,6 +46,7 @@
         var relogio = -1;
         var enemycronometer = 3;
         var menu = -1;
+        var kills = 0;
 
         mapAssets = new AssetsManager();
         mapAssets.loadImage("basetiles","./assets/basetile.png");
@@ -186,7 +187,7 @@
                    enemycronometer -= dt;
                    cena1.passo(dt);
                    cena2.passo2(dt);
-                   ctx.drawImage(assetsMng.img("gameboy"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
+                   ctx.drawImage(assetsMng.img("gameboy"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);                
                 }
             }
             anterior = t;

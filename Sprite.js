@@ -57,6 +57,8 @@ Sprite.prototype.desenhar = function (ctx) {
         ctx.translate(pc.x + 90, pc.y - canvas.height / 4 + 32);
         ctx.drawImage(this.scene.assets.img("heart"), (F % 4) * 32, 0, 32, 32, 0, 0, this.w, this.h);
         ctx.fillText(this.rate*100, this.x-15, this.y+30);
+        ctx.fillText(kills, this.x-15, this.y +60);
+
         ctx.restore();
     }
 
@@ -90,6 +92,12 @@ Sprite.prototype.desenhar = function (ctx) {
             32,
             64
         );
+        ctx.restore();
+    }
+    if (this.props.tipo === "tiro"){
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.fillRect(0, 0, this.w, this.h);
         ctx.restore();
     }
     ctx.restore();

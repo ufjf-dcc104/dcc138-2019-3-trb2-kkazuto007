@@ -65,6 +65,7 @@ Scene.prototype.checaColisao = function(){
                     this.toRemove.push(this.sprites[j]);
                     this.adicionar(new Explosion({x: this.sprites[i].x, y:this.sprites[i].y}));
                     this.assets.play("explosion");
+                    kills++;
                 }
             }
         }

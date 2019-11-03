@@ -45,23 +45,23 @@ Sprite.prototype.desenhar = function (ctx) {
     }
     if (this.props.tipo === "relogio") {
         ctx.save();
-        ctx.scale(4, 4)
-        ctx.translate(canvas.width / 5, canvas.height / 64);
+        ctx.scale(2, 2)
+        ctx.translate(pc.x-32, pc.y - canvas.height / 4 );
         ctx.drawImage(this.scene.assets.img("clock"), Math.floor(relogio / 60) * 32, 0, 32, 32, 0, 0, this.w, this.h);
         ctx.restore();
     }
 
     if (this.props.tipo === "coracao") {
         ctx.save();
-        ctx.scale(5, 5);
-        ctx.translate(canvas.width / 3, canvas.height / 128);
+        ctx.scale(2, 2);
+        ctx.translate(pc.x + 96, pc.y - canvas.height / 4);
         ctx.drawImage(this.scene.assets.img("heart"), (F % 4) * 32, 0, 32, 32, 0, 0, this.w, this.h);
         ctx.fillText(this.rate*100, this.x-15, this.y+30);
         ctx.restore();
     }
 
     if (this.props.tipo === "enemy") {
-        ctx.save();        
+        ctx.save();
         ctx.translate(this.x, this.y);
         ctx.fillRect(0, 0, this.w, this.h);
         ctx.drawImage(this.scene.assets.img("enemy"),
@@ -69,14 +69,15 @@ Sprite.prototype.desenhar = function (ctx) {
             (F % 2) *32,
             32,
             32,
-            -this.w/2,
-            -this.h/2,
-            this.w*4,
-            this.h*4
+            -this.w,
+            -this.h,
+            32,
+            32
         );
         ctx.restore();
     }
     if (this.props.tipo === "pc") {
+        ctx.save();
         ctx.translate(this.x, this.y);
         ctx.fillRect(0, 0, this.w, this.h);
         ctx.drawImage(this.scene.assets.img("demon"),
@@ -84,8 +85,8 @@ Sprite.prototype.desenhar = function (ctx) {
             (Math.floor(this.lado) - 1) * 64,
             32,
             64,
-            -this.w/2,
-            -this.h,
+            -this.w*3/2,
+            -this.h*5/2,
             32,
             64
         );

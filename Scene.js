@@ -52,13 +52,14 @@ Scene.prototype.checaColisao = function(){
         for(var j = i+1; j<this.sprites.length; j++){
             if(this.sprites[i].colidiuCom(this.sprites[j])){
                 if(this.sprites[i].props.tipo === "pc"
-                && this.sprites[j].props.tipo ==="npc"){
+                && this.sprites[j].props.tipo ==="enemy"){
                     this.toRemove.push(this.sprites[j]);
                     this.adicionar(new Explosion({x: this.sprites[j].x, y:this.sprites[j].y}));
                     this.assets.play("explosion");
+                    this.sprites[2].rate += 1;
                 }
                 else 
-                if(this.sprites[i].props.tipo === "npc"
+                if(this.sprites[i].props.tipo === "enemy"
                 && this.sprites[j].props.tipo ==="tiro"){
                     this.toRemove.push(this.sprites[i]);
                     this.toRemove.push(this.sprites[j]);
@@ -84,6 +85,13 @@ Scene.prototype.desenharMapa = function () {
     this.map.desenhar(this.ctx);
 }
 
+Scene.prototype.gerador = function () {
+    if(enemycronometer <= 0 ){
+        this.adicionar(new Sprite({ x: 288, y: 48, w:16, h:16, comportar: persegue(pc), props: {tipo: "enemy"}}));
+        enemycronometer += 10;
+    }
+}
+
 Scene.prototype.passo = function(dt){
     this.limpar();
     ctx.lineWidth = 256;
@@ -93,5 +101,18 @@ Scene.prototype.passo = function(dt){
     this.mover(dt);
     this.desenhar();
     //this.checaColisao();
+    this.removeSprites();
+}
+
+Scene.prototype.passo2 = function(dt){
+    this.limpar();
+    ctx.lineWidth = 256;
+    ctx.strokeRect(0, 0, canvas.width, canvas.height);
+    this.desenharMapa();
+    this.gerador();
+    this.comportar();
+    this.mover(dt);
+    this.desenhar();
+    this.checaColisao();
     this.removeSprites();
 }

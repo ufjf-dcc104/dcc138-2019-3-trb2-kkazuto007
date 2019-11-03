@@ -94,13 +94,19 @@ Map.prototype.desenhar = function (ctx) {
                     ctx.drawImage(this.assets.img("basetiles"),96,96,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
                 case 17:
-                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
-                    ctx.drawImage(this.assets.img("basetiles"),96,96,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
-                    ctx.drawImage(this.assets.img("enemy"),96,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
-                    break;
-                //summon spells:
-                case 18:
                     ctx.drawImage(this.assets.img("basetiles"),0,96,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    ctx.drawImage(this.assets.img("enemy"),128,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                //ziggurat:
+                case 18:
+                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    ctx.drawImage(this.assets.img("basetiles"),64,64,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);   
+                    ctx.drawImage(this.assets.img("basetiles"),128,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 19:
+                    ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    ctx.drawImage(this.assets.img("basetiles"),64,64,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);   
+                    ctx.drawImage(this.assets.img("basetiles"),128,32,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);       
                     break;
                 default:
                     cor = "black";

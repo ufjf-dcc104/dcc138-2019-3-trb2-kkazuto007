@@ -83,8 +83,16 @@
         var cena2 = new Scene({ ctx: ctx, w: canvas.width, h: canvas.height, assets: assetsMng, map:mapa });
         
         //add torres:
-        var temple1 = new Sprite({ x: 288, Y:64, w:64, h:64, vida: 3, props: {tipo: "tower"}});
+        var temple1 = new Sprite({ x: 256, y:48, w:128, h:128, vida: 10, props: {tipo: "tower"}});
+        var temple2 = new Sprite({ x: 48,  y:420, w:128, h:128, vida: 10, props: {tipo: "tower"}});
+        var temple3 = new Sprite({ x: 580, y:440, w:128, h:128, vida: 10, props: {tipo: "tower"}});
+        var temple4 = new Sprite({ x: 300, y:380, w:128, h:128, vida: 10, props: {tipo: "tower"}});
+        var temple5 = new Sprite({ x: 480, y:96, w:128, h:128, vida: 10, props: {tipo: "tower"}});
         cena2.adicionar(temple1);
+        cena2.adicionar(temple2);
+        cena2.adicionar(temple3);
+        cena2.adicionar(temple4);
+        cena2.adicionar(temple5);
 
         var pc = new Sprite({ x: 96, y: 128, w:8, h: 16, vx: 20,vy: 20, comportar: porTeclasDirecionais(teclas), props: { tipo: "pc" }});
         cena2.adicionar(pc);

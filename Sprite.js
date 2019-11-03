@@ -66,10 +66,9 @@ Sprite.prototype.desenhar = function (ctx) {
     }
     
     if (this.props.tipo === "tower") {
-        if(this.morto === 0){
+        if(this.vida >= 5){
             ctx.save();
             ctx.translate(this.x, this.y);
-            ctx.fillRect(0, 0, this.w, this.h);
             ctx.drawImage(this.scene.assets.img("temple"),
                 0,
                 0,
@@ -85,7 +84,6 @@ Sprite.prototype.desenhar = function (ctx) {
         else{
             ctx.save();
             ctx.translate(this.x, this.y);
-            ctx.fillRect(0, 0, this.w, this.h);
             ctx.drawImage(this.scene.assets.img("circle"),
                 0,
                 0,

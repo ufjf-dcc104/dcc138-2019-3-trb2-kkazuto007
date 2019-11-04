@@ -54,6 +54,9 @@ Scene.prototype.checaColisao = function(){
                 this.assets.play("explosion");
                 torres--;
             }
+            if(this.sprites[i].props.tipo === "boss"){
+                boss++;
+            }
             this.toRemove.push(this.sprites[i]);
         }
         for(var j = i+1; j<this.sprites.length; j++){

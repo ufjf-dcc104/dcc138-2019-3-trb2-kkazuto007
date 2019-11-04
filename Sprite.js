@@ -118,10 +118,10 @@ Sprite.prototype.desenhar = function (ctx) {
         );
         ctx.restore();
     }
+    
     if (this.props.tipo === "pc") {
         ctx.save();
         ctx.translate(this.x, this.y);
-        ctx.fillRect(0, 0, this.w, this.h);
         ctx.drawImage(this.scene.assets.img("demon"),
             (F % 4) * 32,
             (Math.floor(this.lado) - 1) * 64,
@@ -135,6 +135,22 @@ Sprite.prototype.desenhar = function (ctx) {
         ctx.restore();
     }
     
+    if (this.props.tipo === "boss") {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.drawImage(this.scene.assets.img("enemy"),
+            128,
+            32,
+            32,
+            32,
+            -this.w,
+            -this.h,
+            64,
+            64
+        );
+        ctx.restore();
+    }
+
     if (this.props.tipo === "tiro"){
         ctx.save();
         ctx.translate(this.x, this.y);
@@ -186,8 +202,9 @@ Sprite.prototype.movermru = function (dt) {
 
     this.mc = Math.floor(this.x / this.scene.map.SIZE);
     this.ml = Math.floor(this.y / this.scene.map.SIZE);
-
-    this.aplicaRestricoes(dt);
+    if(this.props.tipo != "boss"){
+        this.aplicaRestricoes(dt);
+    }
     this.cooldown = this.cooldown - dt;
 }
 

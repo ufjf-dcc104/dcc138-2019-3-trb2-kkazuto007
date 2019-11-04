@@ -93,9 +93,14 @@ Map.prototype.desenhar = function (ctx) {
                     ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     ctx.drawImage(this.assets.img("basetiles"),96,96,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);
                     break;
+                
+                //chained boss:
                 case 17:
                     ctx.drawImage(this.assets.img("basetiles"),0,96,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     ctx.drawImage(this.assets.img("enemy"),128,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
+                    break;
+                case 20:
+                    ctx.drawImage(this.assets.img("basetiles"),0,96,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     break;
                 //ziggurat:
                 case 18:

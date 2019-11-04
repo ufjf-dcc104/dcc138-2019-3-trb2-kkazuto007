@@ -46,75 +46,9 @@ Sprite.prototype.desenhar = function (ctx) {
     else {
         var F = Math.floor(this.frame * (-1) * this.ax / 10);
     }
-    if (this.props.tipo === "relogio") {
-        ctx.save();
-        ctx.scale(2, 2)
-        ctx.translate(pc.x-32, pc.y - canvas.height / 4 + 32 );
-        ctx.drawImage(this.scene.assets.img("clock"), Math.floor(relogio / 60) * 32, 0, 32, 32, 0, 0, this.w, this.h);
-        ctx.restore();
-    }
-
-    if (this.props.tipo === "coracao") {
-        ctx.save();
-        ctx.scale(2, 2);
-        ctx.translate(pc.x + 90, pc.y - canvas.height / 4 + 32);
-        ctx.drawImage(this.scene.assets.img("heart"), (F % 4) * 32, 0, 32, 32, 0, 0, this.w, this.h);
-        ctx.fillStyle = "White";
-        ctx.fillText(" BPM: ", this.x-15, this.y+30);
-        ctx.fillText(this.rate*100, this.x-15, this.y+45);
-        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)/100)*32, 0, 32, 32, this.x-47, this.y+60, 16, 16);
-        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)/10)*32, 0, 32, 32, this.x-31, this.y+60, 16, 16);
-        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)%10)*32, 0, 32, 32, this.x-15, this.y+60, 16, 16);
-
-        ctx.fillText("Towers left: ", this.x-240, this.y);
-        ctx.fillText(torres, this.x-180, this.y);
-
-        ctx.fillText("Souls collected: ", this.x-240, this.y+15);
-        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills/100)*32, 0, 32, 32, this.x-184, this.y+15, 16, 16);
-        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills/10)*32, 0, 32, 32, this.x-168, this.y+15, 16, 16);
-        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills%10)*32, 0, 32, 32, this.x-152, this.y+15, 16, 16);
-
-        ctx.fillText(kills, this.x-160, this.y + 15);   
-
-        ctx.restore();
-    }
-    
-    if (this.props.tipo === "tower") {
-        if(this.vida >= 5){
-            ctx.save();
-            ctx.translate(this.x, this.y);
-            ctx.drawImage(this.scene.assets.img("temple"),
-                0,
-                0,
-                128,
-                128,
-                -this.w/2,
-                -this.h,
-                128,
-                128,
-            );
-            ctx.restore();
-        }
-        else{
-            ctx.save();
-            ctx.translate(this.x, this.y);
-            ctx.drawImage(this.scene.assets.img("circle"),
-                0,
-                0,
-                128,
-                128,
-                -this.w/2,
-                -this.h,
-                128,
-                128,
-            );
-            ctx.restore();
-        }
-    }
     if (this.props.tipo === "enemy") {
         ctx.save();
         ctx.translate(this.x, this.y);
-        ctx.fillRect(0, 0, this.w, this.h);
         ctx.drawImage(this.scene.assets.img("enemy"),
             Math.floor(relogio/60)*32,
             (F % 2) *32,
@@ -126,6 +60,46 @@ Sprite.prototype.desenhar = function (ctx) {
             32
         );
         ctx.restore();
+    }
+    if (this.props.tipo === "relogio") {
+        ctx.save();
+        ctx.scale(2, 2)
+        ctx.translate(pc.x-32, pc.y - canvas.height / 4 + 32 );
+        ctx.drawImage(this.scene.assets.img("clock"), Math.floor(relogio / 60) * 32, 0, 32, 32, 0, 0, this.w, this.h);
+        ctx.restore();
+    }
+    
+    if (this.props.tipo === "tower") {
+        if(this.vida >= 5){
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.drawImage(this.scene.assets.img("temple"),
+            0,
+                0,
+                128,
+                128,
+                -this.w/2,
+                -this.h,
+                128,
+                128,
+                );
+            ctx.restore();
+        }
+        else{
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.drawImage(this.scene.assets.img("circle"),
+            0,
+                0,
+                128,
+                128,
+                -this.w/2,
+                -this.h,
+                128,
+                128,
+            );
+            ctx.restore();
+        }
     }
     
     if (this.props.tipo === "pc") {
@@ -140,43 +114,68 @@ Sprite.prototype.desenhar = function (ctx) {
             -this.h*5/2,
             32,
             64
-        );
-        ctx.restore();
-    }
-    
+            );
+            ctx.restore();
+        }
+        
     if (this.props.tipo === "boss") {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.drawImage(this.scene.assets.img("enemy"),
-            128,
-            32,
-            32,
-            32,
-            -this.w,
-            -this.h,
-            64,
-            64
+        128,
+        32,
+        32,
+        32,
+        -this.w,
+        -this.h,
+        64,
+        64
         );
         ctx.restore();
     }
-
+        
     if (this.props.tipo === "tiro"){
         ctx.save();
         ctx.translate(this.x, this.y);
         var T = this.frame * 26
         ctx.drawImage(this.scene.assets.img("bash"),
-           Math.floor(T/5) * 64,
-           0,
-           64,
-           64,
-           0,
-           0,
-           64,
-           64
+        Math.floor(T/5) * 64,
+        0,
+        64,
+        64,
+        0,
+        0,
+        64,
+        64
         );
         ctx.restore();
     }
     ctx.restore();
+    
+    //TRANSFORMAR EM DESENHA HUD
+    if (this.props.tipo === "coracao") {
+        ctx.save();
+        //ctx.scale(2, 2);
+        ctx.translate(pc.x + 90, pc.y - canvas.height / 4 + 32);
+        ctx.drawImage(this.scene.assets.img("heart"), (F % 4) * 32, 0, 32, 32, 0, 0, this.w, this.h);
+        ctx.fillStyle = "White";
+        ctx.fillText(" BPM: ", this.x-15, this.y+30);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)/100)*32, 0, 32, 32, this.x-36, this.y+30, 16, 16);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)/10)*32, 0, 32, 32, this.x-20, this.y+30, 16, 16);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)%10)*32, 0, 32, 32, this.x-4, this.y+30, 16, 16);
+    
+        ctx.fillText("Towers left: ", this.x-240, this.y);
+        ctx.drawImage(this.scene.assets.img("numbers"), torres*32, 0, 32, 32, this.x-188, this.y-12, 16, 16);
+    
+        ctx.fillText("Souls collected: ", this.x-240, this.y+15);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills/100)*32, 0, 32, 32, this.x-184, this.y+15, 16, 16);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills/10)*32, 0, 32, 32, this.x-168, this.y+15, 16, 16);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills%10)*32, 0, 32, 32, this.x-152, this.y+15, 16, 16);
+    
+        ctx.fillText(kills, this.x-160, this.y + 15);   
+    
+        ctx.restore();
+    }
 
 }
 Sprite.prototype.mover = function (dt) {

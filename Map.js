@@ -102,6 +102,7 @@ Map.prototype.desenhar = function (ctx) {
                 case 20:
                     ctx.drawImage(this.assets.img("basetiles"),0,96,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    
                     break;
+                    
                 //ziggurat:
                 case 18:
                     ctx.drawImage(this.assets.img("basetiles"),0,0,32,32,c*this.SIZE,l*this.SIZE,this.SIZE,this.SIZE);    

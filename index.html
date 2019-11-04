@@ -118,10 +118,9 @@
 
         function heartrate(){
             return function (){
-                this.rate = 7 - relogio/50 * 1.5 - damage
+                this.rate = 6.3 - relogio/50 * 1.5 - damage
             }
         }
-
         function persegue(alvo) {
            return function () {
                this.ax = 20*Math.sign(alvo.x - this.x);
@@ -219,7 +218,7 @@
                 else{
                     if(boss <=1){
                         if(torres <= 0 || kills >= 2){
-                           cena2.adicionar(new Sprite({x:386, y: 320, h:32, w:32 ,vida:30 ,comportar: persegue(pc), props:{tipo: "boss"}}))
+                           cena2.adicionar(new Sprite({x:386, y: 320, h:32, w:32 ,vida:15 ,comportar: persegue(pc), props:{tipo: "boss"}}))
                            mapa.cells[11][9].tipo = 20;
                            boss++;
                         }

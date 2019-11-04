@@ -28,6 +28,7 @@
         assetsMng.loadImage("circle","./assets/summoncircle.png");
         assetsMng.loadImage("bash","./assets/bash.png");
         assetsMng.loadImage("menu","./assets/menu.png");
+        assetsMng.loadImage("gameover","./assets/gameover.png");
         assetsMng.loadImage("gameboy","./assets/gameboy.png");
 
 
@@ -200,7 +201,7 @@
                    ctx.drawImage(assetsMng.img("menu"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
                 }
                 else if(heart.rate <= 0){
-                   ctx.drawImage(assetsMng.img("menu"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
+                   ctx.drawImage(assetsMng.img("gameover"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
                 }
                 else{
                    relogio += dt;

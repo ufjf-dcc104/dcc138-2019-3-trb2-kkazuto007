@@ -65,6 +65,7 @@ Scene.prototype.checaColisao = function(){
                     this.assets.play("death");
                     this.assets.play("heartbeat");
                     this.sprites[2].rate += 1;
+                    damage += 0.05
                 }
                 else 
                 if(this.sprites[i].props.tipo === "enemy"

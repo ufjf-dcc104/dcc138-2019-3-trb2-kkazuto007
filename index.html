@@ -54,6 +54,7 @@
         var enemycronometer = 3;
         var batida = 2;
         var menu = -1;
+        var damage = 0;
         var kills = 0;
         var torres = 5;
 
@@ -90,11 +91,11 @@
         var cena2 = new Scene({ ctx: ctx, w: canvas.width, h: canvas.height, assets: assetsMng, map:mapa });
         
         //add torres:
-        var temple1 = new Sprite({ x: 256, y:48, w:128, h:128, vida: 10, props: {tipo: "tower"}});
-        var temple2 = new Sprite({ x: 48,  y:420, w:128, h:128, vida: 10, props: {tipo: "tower"}});
-        var temple3 = new Sprite({ x: 580, y:440, w:128, h:128, vida: 10, props: {tipo: "tower"}});
-        var temple4 = new Sprite({ x: 300, y:380, w:128, h:128, vida: 10, props: {tipo: "tower"}});
-        var temple5 = new Sprite({ x: 480, y:96, w:128, h:128, vida: 10, props: {tipo: "tower"}});
+        var temple1 = new Sprite({ x: 256, y:48, w:128, h:128, vida: 8, props: {tipo: "tower"}});
+        var temple2 = new Sprite({ x: 48,  y:420, w:128, h:128, vida: 8, props: {tipo: "tower"}});
+        var temple3 = new Sprite({ x: 580, y:440, w:128, h:128, vida: 8, props: {tipo: "tower"}});
+        var temple4 = new Sprite({ x: 300, y:380, w:128, h:128, vida: 8, props: {tipo: "tower"}});
+        var temple5 = new Sprite({ x: 480, y:96, w:128, h:128, vida: 8, props: {tipo: "tower"}});
         cena2.adicionar(temple1);
         cena2.adicionar(temple2);
         cena2.adicionar(temple3);
@@ -114,7 +115,7 @@
 
         function heartrate(){
             return function (){
-                this.rate = 1 - relogio/50 * 1.5
+                this.rate = 7 - relogio/50 * 1.5 - damage
             }
         }
 

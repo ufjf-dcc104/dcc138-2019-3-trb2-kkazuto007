@@ -62,12 +62,18 @@ Sprite.prototype.desenhar = function (ctx) {
         ctx.fillStyle = "White";
         ctx.fillText(" BPM: ", this.x-15, this.y+30);
         ctx.fillText(this.rate*100, this.x-15, this.y+45);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)/100)*32, 0, 32, 32, this.x-47, this.y+60, 16, 16);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)/10)*32, 0, 32, 32, this.x-31, this.y+60, 16, 16);
+        ctx.drawImage(this.scene.assets.img("numbers"), Math.floor((this.rate*100/7)%10)*32, 0, 32, 32, this.x-15, this.y+60, 16, 16);
+
         ctx.fillText("Towers left: ", this.x-240, this.y);
         ctx.fillText(torres, this.x-180, this.y);
+
         ctx.fillText("Souls collected: ", this.x-240, this.y+15);
         ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills/100)*32, 0, 32, 32, this.x-184, this.y+15, 16, 16);
         ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills/10)*32, 0, 32, 32, this.x-168, this.y+15, 16, 16);
         ctx.drawImage(this.scene.assets.img("numbers"), Math.floor(kills%10)*32, 0, 32, 32, this.x-152, this.y+15, 16, 16);
+
         ctx.fillText(kills, this.x-160, this.y + 15);   
 
         ctx.restore();

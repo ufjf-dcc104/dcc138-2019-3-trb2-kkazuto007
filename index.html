@@ -27,6 +27,7 @@
         assetsMng.loadImage("bash","./assets/bash.png");
         assetsMng.loadImage("menu","./assets/menu.png");
         assetsMng.loadImage("gameover","./assets/gameover.png");
+        assetsMng.loadImage("youwon","./assets/youwon.png");
         assetsMng.loadImage("gameboy","./assets/gameboy.png");
         
         assetsMng.loadAudio("explosion", "assets/explosion.mp3");
@@ -202,7 +203,7 @@
                    ctx.drawImage(assetsMng.img("menu"),-64,-16,canvas.width/2,canvas.height/2);
                 }
                 else if(torres <= 0){
-                   ctx.drawImage(assetsMng.img("menu"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
+                   ctx.drawImage(assetsMng.img("youwon"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
                 }
                 else if(heart.rate <= 0){
                     if(batida >= -1){

@@ -59,8 +59,13 @@ Sprite.prototype.desenhar = function (ctx) {
         ctx.scale(2, 2);
         ctx.translate(pc.x + 90, pc.y - canvas.height / 4 + 32);
         ctx.drawImage(this.scene.assets.img("heart"), (F % 4) * 32, 0, 32, 32, 0, 0, this.w, this.h);
-        ctx.fillText(this.rate*100, this.x-15, this.y+30);
-        ctx.fillText(kills, this.x-15, this.y +60);
+        ctx.fillStyle = "White";
+        ctx.fillText(" BPM: ", this.x-15, this.y+30);
+        ctx.fillText(this.rate*100, this.x-15, this.y+45);
+        ctx.fillText("Towers left: ", this.x-240, this.y);
+        ctx.fillText(torres, this.x-180, this.y);
+        ctx.fillText("Souls collected: ", this.x-240, this.y+15);
+        ctx.fillText(kills, this.x-160, this.y + 15);   
 
         ctx.restore();
     }

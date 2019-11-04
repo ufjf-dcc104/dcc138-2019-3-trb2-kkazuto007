@@ -50,6 +50,7 @@
         var enemycronometer = 3;
         var menu = -1;
         var kills = 0;
+        var torres = 5;
 
         mapAssets = new AssetsManager();
         mapAssets.loadImage("basetiles","./assets/basetile.png");
@@ -195,7 +196,7 @@
                 if(menu <= 0){
                    ctx.drawImage(assetsMng.img("menu"),-64,-16,canvas.width/2,canvas.height/2);
                 }
-                else if(kills >= 100){
+                else if(torres <= 0){
                    ctx.drawImage(assetsMng.img("menu"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
                 }
                 else if(heart.rate <= 0){

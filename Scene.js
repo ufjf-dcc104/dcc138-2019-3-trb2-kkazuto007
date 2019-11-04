@@ -50,6 +50,9 @@ Scene.prototype.checaColisao = function(){
             this.sprites[i].morto = 1;
         }
         if(this.sprites[i].morto){
+            if(this.sprites[i].props.tipo === "tower"){
+                torres--;
+            }
             this.toRemove.push(this.sprites[i]);
         }
         for(var j = i+1; j<this.sprites.length; j++){
@@ -98,6 +101,10 @@ Scene.prototype.desenharMapa = function () {
 Scene.prototype.gerador = function () {
     if(enemycronometer <= 0 ){
         this.adicionar(new Sprite({ x: 288, y: 48, w:16, h:16, comportar: persegue(pc), props: {tipo: "enemy"}}));
+        this.adicionar(new Sprite({ x: 48, y: 420, w:16, h:16, comportar: persegue(pc), props: {tipo: "enemy"}}));
+        this.adicionar(new Sprite({ x: 580, y: 440, w:16, h:16, comportar: persegue(pc), props: {tipo: "enemy"}}));
+        this.adicionar(new Sprite({ x: 300, y: 380, w:16, h:16, comportar: persegue(pc), props: {tipo: "enemy"}}));
+        this.adicionar(new Sprite({ x: 480, y: 96, w:16, h:16, comportar: persegue(pc), props: {tipo: "enemy"}}));
         enemycronometer += 10;
     }
 }

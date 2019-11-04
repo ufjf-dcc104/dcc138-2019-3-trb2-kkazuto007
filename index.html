@@ -29,6 +29,8 @@
         assetsMng.loadImage("gameover","./assets/gameover.png");
         assetsMng.loadImage("youwon","./assets/youwon.png");
         assetsMng.loadImage("gameboy","./assets/gameboy.png");
+        assetsMng.loadImage("numbers","./assets/numbers.png");
+
         
         assetsMng.loadAudio("explosion", "assets/explosion.mp3");
         assetsMng.loadAudio("shot", "assets/switch.mp3");
@@ -145,7 +147,7 @@
                         props: { tipo: "tiro" }
                     });
                     this.scene.adicionar(tiro);
-                    this.cooldown = 2.0;
+                    this.cooldown = 0.75;
                     assetsMng.play("shot");
                 }
             }

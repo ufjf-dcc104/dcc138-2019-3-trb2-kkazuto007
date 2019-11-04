@@ -92,6 +92,12 @@ Scene.prototype.checaColisao = function(){
                     this.toRemove.push(this.sprites[j]);
                     this.sprites[i].vida--;
                 }
+                else 
+                if(this.sprites[i].props.tipo === "boss"
+                && this.sprites[j].props.tipo ==="tiro"){
+                    this.toRemove.push(this.sprites[j]);
+                    this.sprites[i].vida--;
+                }
             }
         }
     }  

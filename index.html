@@ -209,7 +209,7 @@
                 }
                 else if(torres <= 0 || kills >= 50 && boss <=0){
                     cena2.adicionar(new Sprite({x:386, y: 320, h:32, w:32 ,vida:30 ,comportar: persegue(pc), props:{tipo: "boss"}}))
-                    mapa.cells[11][8].tipo = 20;
+                    mapa.cells[11][9].tipo = 20;
                     boss = 1;
                 }
                 else if(heart.rate <= 0){

@@ -71,6 +71,13 @@ Scene.prototype.checaColisao = function(){
                     damage += 0.05
                 }
                 else 
+                if(this.sprites[i].props.tipo === "pc"
+                && this.sprites[j].props.tipo ==="boss"){
+                    this.assets.play("heartbeat");
+                    this.sprites[2].rate += 1;
+                    damage += 0.25
+                }
+                else 
                 if(this.sprites[i].props.tipo === "enemy"
                 && this.sprites[j].props.tipo ==="tiro"){
                     this.toRemove.push(this.sprites[i]);

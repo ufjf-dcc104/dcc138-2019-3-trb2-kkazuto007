@@ -51,6 +51,7 @@ Scene.prototype.checaColisao = function(){
         }
         if(this.sprites[i].morto){
             if(this.sprites[i].props.tipo === "tower"){
+                this.assets.play("explosion");
                 torres--;
             }
             this.toRemove.push(this.sprites[i]);

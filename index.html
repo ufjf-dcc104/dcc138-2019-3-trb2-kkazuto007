@@ -18,8 +18,6 @@
     <script>
         var assetsMng = new AssetsManager();
         assetsMng.loadImage("explosion", "assets/explosion.png");
-        assetsMng.loadAudio("explosion", "assets/explosion.mp3");
-        assetsMng.loadAudio("shot", "assets/shot.mp3");
         assetsMng.loadImage("demon", "assets/player.png");
         assetsMng.loadImage("clock","./assets/clock.png");
         assetsMng.loadImage("heart","./assets/heart.png");
@@ -30,11 +28,14 @@
         assetsMng.loadImage("menu","./assets/menu.png");
         assetsMng.loadImage("gameover","./assets/gameover.png");
         assetsMng.loadImage("gameboy","./assets/gameboy.png");
+        
+        assetsMng.loadAudio("explosion", "assets/explosion.mp3");
+        assetsMng.loadAudio("shot", "assets/shot.mp3");
+        assetsMng.loadAudio("tension", "assets/tension.mp3");
+        assetsMng.loadAudio("heartbeat","assets/heartbeat.mp3");
 
-
-
-
-
+        
+        
         var canvas = document.querySelector("canvas");
         canvas.width = 640;
         canvas.height = 576;
@@ -49,6 +50,7 @@
 
         var relogio = -1;
         var enemycronometer = 3;
+        var batida = 2;
         var menu = -1;
         var kills = 0;
         var torres = 5;
@@ -56,11 +58,12 @@
         mapAssets = new AssetsManager();
         mapAssets.loadImage("basetiles","./assets/basetile.png");
         mapAssets.loadImage("enemy","./assets/enemy.png");
+        mapAssets.loadAudio("heartbeat", "./assets/heartbeat.mp3");
 
-
+        
         var mapa = new Map({COLUMNS:20, LINES:18, m:
         [
-        [3,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  5],
+            [3,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  5],
         [6,  2,  2,  1,  1,  0,  0,  0,  0,  13, 14, 15, 16, 1,  0,  1,  0,  1,  2,  7],
         [6,  2,  2,  1,  0,  0,  1,  11, 0,  0,  13, 16, 11, 1,  0,  0,  0,  0,  1,  7],
         [6,  1,  1,  0,  0,  0,  1,  12, 1,  0,  0,  1,  12, 2,  1,  0,  1,  0,  0,  7],
@@ -109,7 +112,7 @@
 
         function heartrate(){
             return function (){
-                this.rate = 6 - relogio/50 * 1.5
+                this.rate = 1 - relogio/50 * 1.5
             }
         }
 
@@ -201,11 +204,20 @@
                    ctx.drawImage(assetsMng.img("menu"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
                 }
                 else if(heart.rate <= 0){
+                    if(batida >= -1){
+                       assetsMng.play("tension");
+                       batida = 900;
+                    }
                    ctx.drawImage(assetsMng.img("gameover"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
                 }
                 else{
                    relogio += dt;
-                   enemycronometer -= dt;
+                   enemycronometer -= dt; 
+                   batida -= dt * heart.rate/2
+                   if(batida <= 0){
+                     assetsMng.play("heartbeat");
+                     batida += 2; 
+                   }
                    cena1.passo(dt);
                    cena2.passo2(dt);
                    ctx.drawImage(assetsMng.img("gameboy"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);                

@@ -146,14 +146,14 @@
                    var tiro = new Sprite({
                        x: this.x,
                        y: this.y,
-                       w: 128,
-                       h: 128,
+                       w: 32,
+                       h: 32,
                        comportar: persegue2(alvo),
                        props: { tipo: "bossshoot"},
                     });
                     this.scene.adicionar(tiro);
                     assetsMng.play("shot");
-                    this.cooldown = 0.75;
+                    this.cooldown = 2;
                 }
             }
         }

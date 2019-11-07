@@ -62,10 +62,10 @@ Sprite.prototype.desenhar = function (ctx) {
         ctx.restore();
     }
 
-    if (this.props.tipo === "bossshot") {
+    if (this.props.tipo === "bossshoot") {
         ctx.save();
         ctx.translate(this.x, this.y);
-        ctx.fillRect(0,0,this.w,this.h);
+        ctx.fillRect(-this.w/2,-this.h/2,this.w,this.h);
         ctx.restore();
     }
 
@@ -218,7 +218,7 @@ Sprite.prototype.movermru = function (dt) {
 
     this.mc = Math.floor(this.x / this.scene.map.SIZE);
     this.ml = Math.floor(this.y / this.scene.map.SIZE);
-    if(this.props.tipo != "boss"){
+    if(this.props.tipo != "boss" && this.props.tipo != "bossshoot"){
         this.aplicaRestricoes(dt);
     }
     this.cooldown = this.cooldown - dt;

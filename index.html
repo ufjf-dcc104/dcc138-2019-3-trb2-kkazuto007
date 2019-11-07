@@ -113,18 +113,48 @@
 
         var heart = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, w: 16, h: 16, rate: 6, w: 32, h: 32, comportar: heartrate() , props: { tipo: "coracao" }});
         cena2.adicionar(heart);
-
-
+ 
+        var chefe = new Sprite({x:386, y: 320, h:32, w:32 ,vida:15 ,comportar: persegueSpawn(pc), props:{tipo: "boss"}});
+                           
 
         function heartrate(){
             return function (){
                 this.rate = 6.3 - relogio/50 * 1.5 - damage
             }
         }
+
         function persegue(alvo) {
            return function () {
                this.ax = 20*Math.sign(alvo.x - this.x);
                this.ay = 20*Math.sign(alvo.y - this.y);
+            }
+        }
+
+        function persegue2(alvo) {
+           return function () {
+               this.ax = 50*Math.sign(alvo.x - this.x);
+               this.ay = 50*Math.sign(alvo.y - this.y);
+            }
+        }
+
+        function persegueSpawn (alvo) {
+            return function () {
+               this.ax = 20*Math.sign(alvo.x - this.x);
+               this.ay = 20*Math.sign(alvo.y - this.y);
+               this.cooldown = this.cooldown - dt;
+               if(this.cooldown <= 0){
+                   var tiro = new Sprite({
+                       x: this.x,
+                       y: this.y,
+                       w: 128,
+                       h: 128,
+                       comportar: persegue2(alvo),
+                       props: { tipo: "bossshoot"},
+                    });
+                    this.scene.adicionar(tiro);
+                    assetsMng.play("shot");
+                    this.cooldown = 0.75;
+                }
             }
         }
 
@@ -211,14 +241,14 @@
                 else if(heart.rate <= 0){
                     if(batida >= -1){
                         assetsMng.play("tension");
-                        batida = 900;
+                        batida = -9000;
                     }
                     ctx.drawImage(assetsMng.img("gameover"),pc.x-160,pc.y-144,canvas.width/2,canvas.height/2);
                 }
                 else{
                     if(boss <=1){
                         if(torres <= 0 || kills >= 2){
-                           cena2.adicionar(new Sprite({x:386, y: 320, h:32, w:32 ,vida:15 ,comportar: persegue(pc), props:{tipo: "boss"}}))
+                           cena2.adicionar(chefe);
                            mapa.cells[11][9].tipo = 20;
                            boss++;
                         }

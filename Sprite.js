@@ -61,6 +61,14 @@ Sprite.prototype.desenhar = function (ctx) {
         );
         ctx.restore();
     }
+
+    if (this.props.tipo === "bossshot") {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.fillRect(0,0,this.w,this.h);
+        ctx.restore();
+    }
+
     if (this.props.tipo === "relogio") {
         ctx.save();
         ctx.scale(2, 2)

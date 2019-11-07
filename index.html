@@ -105,7 +105,7 @@
         cena2.adicionar(temple4);
         cena2.adicionar(temple5);
 
-        var pc = new Sprite({ x: 96, y: 128, w:8, h: 16, vx: 20,vy: 20, comportar: porTeclasDirecionais(teclas), props: { tipo: "pc" }});
+        var pc = new Sprite({ x: 128, y: 128, w:8, h: 16, vx: 20,vy: 20, comportar: porTeclasDirecionais(teclas), props: { tipo: "pc" }});
         cena2.adicionar(pc);
 
         var relogiosprite = new Sprite({ x: canvas.width/8-pc.x, y: canvas.height/8-pc.y, w: 32, h: 32, props: { tipo: "relogio" }});

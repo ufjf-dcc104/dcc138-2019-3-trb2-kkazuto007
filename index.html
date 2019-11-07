@@ -132,8 +132,8 @@
 
         function persegue2(alvo) {
            return function () {
-               this.ax = 25*Math.sign(alvo.x - this.x);
-               this.ay = 25*Math.sign(alvo.y - this.y);
+               this.ax = 27.5*Math.sign(alvo.x - this.x);
+               this.ay = 27.5*Math.sign(alvo.y - this.y);
             }
         }
 
@@ -151,9 +151,17 @@
                        comportar: persegue2(alvo),
                        props: { tipo: "bossshoot"},
                     });
+                   var angel = new Sprite({
+                       x: this.x,
+                       y: this.y,
+                       w: 32,
+                       h: 32,
+                       props: { tipo: "bossshoot2"},
+                    });
                     this.scene.adicionar(tiro);
                     assetsMng.play("shot");
-                    this.cooldown = 2;
+                    this.scene.adicionar(angel);
+                    this.cooldown = 3;
                 }
             }
         }

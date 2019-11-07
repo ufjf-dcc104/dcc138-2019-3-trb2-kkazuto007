@@ -84,7 +84,7 @@ Sprite.prototype.desenhar = function (ctx) {
         );
         ctx.restore();
     }
-    
+
     if (this.props.tipo === "relogio") {
         ctx.save();
         ctx.scale(2, 2)
@@ -234,7 +234,7 @@ Sprite.prototype.movermru = function (dt) {
 
     this.mc = Math.floor(this.x / this.scene.map.SIZE);
     this.ml = Math.floor(this.y / this.scene.map.SIZE);
-    if(this.props.tipo != "boss" && this.props.tipo != "bossshoot"){
+    if(this.props.tipo != "boss" && this.props.tipo != "bossshoot" && this.props.tipo != "bossshoot2"){
         this.aplicaRestricoes(dt);
     }
     this.cooldown = this.cooldown - dt;

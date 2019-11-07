@@ -137,6 +137,12 @@
             }
         }
 
+        function orbita(alvo) {
+           return function () {
+               this.x = Math.cos()*alvo.x - this.vx*dt;
+            }
+        }
+        
         function persegueSpawn (alvo) {
             return function () {
                this.ax = 20*Math.sign(alvo.x - this.x);
@@ -156,6 +162,7 @@
                        y: this.y,
                        w: 32,
                        h: 32,
+                       comportar: orbita(chefe),
                        props: { tipo: "bossshoot2"},
                     });
                     this.scene.adicionar(tiro);

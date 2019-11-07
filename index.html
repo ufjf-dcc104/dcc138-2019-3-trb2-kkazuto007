@@ -132,8 +132,8 @@
 
         function persegue2(alvo) {
            return function () {
-               this.ax = 50*Math.sign(alvo.x - this.x);
-               this.ay = 50*Math.sign(alvo.y - this.y);
+               this.ax = 25*Math.sign(alvo.x - this.x);
+               this.ay = 25*Math.sign(alvo.y - this.y);
             }
         }
 
@@ -170,7 +170,7 @@
 
                 if (teclas.espaco && this.cooldown <= 0) {
                     var tiro = new Sprite({
-                        x: this.x-14, y: this.y-20,
+                        x: this.x, y: this.y-8,
                         a: this.a - 0.1 + 0.2 * Math.random(),
                         w: 64, h: 64,
                         props: { tipo: "tiro" }

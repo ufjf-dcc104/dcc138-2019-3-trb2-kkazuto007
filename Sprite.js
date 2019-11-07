@@ -118,8 +118,8 @@ Sprite.prototype.desenhar = function (ctx) {
             (Math.floor(this.lado) - 1) * 64,
             32,
             64,
-            -this.w*3/2,
-            -this.h*5/2,
+            -this.w*2,
+            -this.h*3,
             32,
             64
             );
@@ -151,8 +151,8 @@ Sprite.prototype.desenhar = function (ctx) {
         0,
         64,
         64,
-        0,
-        0,
+        -this.w/2,
+        -this.h/2,
         64,
         64
         );

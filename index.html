@@ -139,10 +139,11 @@
 
         function orbita(alvo) {
            return function () {
-               this.x = Math.cos()*alvo.x - this.vx*dt;
+               this.x = Math.cos()*alvo.x*30*dt;
+               this.y = Math.sin()*alvo.y*30*dt;
             }
         }
-        
+
         function persegueSpawn (alvo) {
             return function () {
                this.ax = 20*Math.sign(alvo.x - this.x);
